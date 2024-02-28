@@ -9,12 +9,21 @@ namespace Topic_5._5_Assignment
     public class Die
     {
         private int _roll;
+        private int _sides;
         private Random _random;
 
         public Die()
         {
             _random = new Random();
-            _roll = _random.Next(1,7);
+            _roll = _random.Next(1, _sides + 1);
+            _sides = 6;
+        }
+
+        public Die(int sides)
+        {
+            _sides = sides;
+            _random = new Random();
+            _roll = _random.Next(1, _sides + 1);
         }
 
         public int Roll
@@ -24,7 +33,7 @@ namespace Topic_5._5_Assignment
 
         public int RollDie()
         {
-            _roll = _random.Next(1, 7);
+            _roll = _random.Next(1, _sides + 1);
             return _roll;
         }
 
@@ -76,6 +85,14 @@ namespace Topic_5._5_Assignment
                 Console.WriteLine("|o o|");
                 Console.WriteLine("|o o|");
                 Console.WriteLine("|o o|");
+                Console.WriteLine("-----");
+            }
+            else
+            {
+                Console.WriteLine("-----");
+                Console.WriteLine("|   |");
+                Console.WriteLine("| " +_roll + "  |");
+                Console.WriteLine("|   |");
                 Console.WriteLine("-----");
             }
         }
