@@ -1,4 +1,6 @@
-﻿namespace Topic_5._5_Assignment
+﻿using System;
+
+namespace Topic_5._5_Assignment
 {
     internal class Program
     {
@@ -94,12 +96,14 @@
                     if (die1.Roll == die2.Roll)
                     {
                         Console.WriteLine("You Win!");
+                        Console.WriteLine("");
                         bank += bet * 2;
                         Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
                         Console.WriteLine("You Lose! Too bad!");
+                        Console.WriteLine("");
                         bank -= bet * 2;
                         Console.WriteLine($"You lost {(bet * 2).ToString("C")}");
                     }
@@ -110,12 +114,14 @@
                     if (die1.Roll != die2.Roll)
                     {
                         Console.WriteLine("You Win!");
+                        Console.WriteLine("");
                         bank += bet / 2;
-                        Console.WriteLine($"You won {bet.ToString("C")}");
+                        Console.WriteLine($"You won {(bet / 2).ToString("C")}");
                     }
                     else
                     {
                         Console.WriteLine("You Lose! Too bad!");
+                        Console.WriteLine("");
                         bank -= bet / 2;
                         Console.WriteLine($"You lost {(bet / 2).ToString("C")}");
                     }
@@ -126,12 +132,14 @@
                     if ((die1.Roll + die2.Roll) % 2 == 0)
                     {
                         Console.WriteLine("You Win!");
+                        Console.WriteLine("");
                         bank += bet;
                         Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
                         Console.WriteLine("You Lose! Too bad!");
+                        Console.WriteLine("");
                         bank -= bet;
                         Console.WriteLine($"You lost {bet.ToString("C")}");
                     }
@@ -142,12 +150,14 @@
                     if ((die1.Roll + die2.Roll) % 2 != 0)
                     {
                         Console.WriteLine("You Win!");
+                        Console.WriteLine("");
                         bank += bet;
                         Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
                         Console.WriteLine("You Lose! Too bad!");
+                        Console.WriteLine("");
                         bank -= bet;
                         Console.WriteLine($"You lost {bet.ToString("C")}");
                     }
