@@ -12,10 +12,16 @@
             Die die1 = new Die();
             Die die2 = new Die();
 
+            Console.WriteLine("Welcome to the dice game! Make a bet then guess what the resulting roll will be! Also, according to the contract you signed in order to participate, if you run out of money we are legally allowed to take your kidneys as collateral until you can pay us back. With interest. Have fun!");
+            Console.WriteLine("");
+
             while (bank > 0)
             {
                 bet = -1;
                 outcomeSelection = "";
+
+                Console.WriteLine($"Bank: {bank.ToString("C")}");
+                Console.WriteLine("");
 
                 while (bet == -1)
                 {
@@ -40,10 +46,12 @@
                 while (outcomeSelection == "")
                 {
                     Console.WriteLine("Pleasae guess an outcome");
-                    Console.WriteLine("1. Doubles");
-                    Console.WriteLine("2. Not Double");
-                    Console.WriteLine("3. Even Sum");
-                    Console.WriteLine("4. Odd Sum");
+                    Console.WriteLine("1. Doubles (The dice will be the same. Wins double your bet, loses double your bet)");
+                    Console.WriteLine("2. Not Double (The dice will not be the same. Wins half your bet, loses half your bet)");
+                    Console.WriteLine("3. Even Sum (The sum of the dice will be even. Wins your bet, loses your bet)");
+                    Console.WriteLine("4. Odd Sum (The sum of the dice will be odd. Wins your bet, loses your bet)");
+                    Console.WriteLine("");
+                    Console.Write("Your guess: ");
                     outcomeSelection = Console.ReadLine().ToLower();
 
                     if (outcomeSelection == "doubles" || outcomeSelection == "1")
@@ -74,16 +82,26 @@
                 die1.RollDie();
                 die2.RollDie();
 
+                Console.WriteLine("");
+                Console.WriteLine("Die One:");
+                die1.DrawRoll();
+                Console.WriteLine("Die Two:");
+                die2.DrawRoll();
+                Console.WriteLine("");
+
                 if (outcomeGuess == 1)
                 {
                     if (die1.Roll == die2.Roll)
                     {
-                        Console.WriteLine("");
+                        Console.WriteLine("You Win!");
                         bank += bet * 2;
+                        Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
+                        Console.WriteLine("You Lose! Too bad!");
                         bank -= bet * 2;
+                        Console.WriteLine($"You lost {(bet * 2).ToString("C")}");
                     }
                 }
                 
@@ -91,11 +109,15 @@
                 {
                     if (die1.Roll != die2.Roll)
                     {
+                        Console.WriteLine("You Win!");
                         bank += bet / 2;
+                        Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
+                        Console.WriteLine("You Lose! Too bad!");
                         bank -= bet / 2;
+                        Console.WriteLine($"You lost {(bet / 2).ToString("C")}");
                     }
                 }
 
@@ -103,11 +125,15 @@
                 {
                     if ((die1.Roll + die2.Roll) % 2 == 0)
                     {
+                        Console.WriteLine("You Win!");
                         bank += bet;
+                        Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
+                        Console.WriteLine("You Lose! Too bad!");
                         bank -= bet;
+                        Console.WriteLine($"You lost {bet.ToString("C")}");
                     }
                 }
 
@@ -115,14 +141,22 @@
                 {
                     if ((die1.Roll + die2.Roll) % 2 != 0)
                     {
+                        Console.WriteLine("You Win!");
                         bank += bet;
+                        Console.WriteLine($"You won {bet.ToString("C")}");
                     }
                     else
                     {
+                        Console.WriteLine("You Lose! Too bad!");
                         bank -= bet;
+                        Console.WriteLine($"You lost {bet.ToString("C")}");
                     }
                 }
+
+                Console.WriteLine("");
             }
+
+            Console.WriteLine("Uh oh, Looks like you ran out of money! Oh well, you signed the contract now hand over your kidneys.");
         }
     }
 }
